@@ -43,14 +43,14 @@
 
   $app->get("/brand/{id}", function($id) use ($app) {
     $this_brand = Brand::find($id);
-    return $app['twig']->render('brand.html.twig', array('brand' => $this_brand, 'stores'=>$this_brand->getStores()));
+    return $app['twig']->render('brand.html.twig', array('brand' => $this_brand, 'stores'=>$this_brand->getStores(), 'all_stores'=>Store::getAll()));
   });
 
   $app->post("/brand/{id}/addStore", function($id) use ($app) {
     $this_brand = Brand::find($id);
     $this_store = Store::find($_POST['store_id']);
     $this_brand->addStore($this_store);
-    return $app['twig']->render('brand.html.twig', array('brand' => $this_brand, 'stores'=>$this_brand->getStores()));
+    return $app['twig']->render('brand.html.twig', array('brand' => $this_brand, 'stores'=>$this_brand->getStores(), 'all_stores'=>Store::getAll()));
   });
 
   //stores
@@ -71,15 +71,15 @@
 
   $app->get("/store/{id}", function($id) use ($app) {
     $this_store = Store::find($id);
-    return $app['twig']->render('store.html.twig', array('store' => $this_store, 'brands'=>$this_store->getBrands()));
+    return $app['twig']->render('store.html.twig', array('store' => $this_store, 'brands'=>$this_store->getBrands(), 'all_brands'=>Brand::getAll())));
   });
 
   $app->patch("/store/{id}/edit", function($id) use ($app) {
     $this_store = Store::find($id);
     $new_name = $_POST['name'];
     $this_store->update($new_name);
-    return $app['twig']->render('store.html.twig', array('store' => $this_store, 'brands'=>$this_store->getBrands()));
-  });
+    array('store' => $this_store, 'brands'=>$this_store->getBrands(), 'all_brands'=>Brand::getAll())));
+    });
 
   $app->delete("/store/{id}/delete", function($id) use ($app) {
     $this_store = Store::find($id);
@@ -91,8 +91,8 @@
     $this_store = Store::find($id);
     $this_brand = Brand::find($_POST['brand_id']);
     $this_store->addBrand($this_brand);
-    return $app['twig']->render('store.html.twig', array('store' => $this_store, 'brands'=>$this_store->getBrands()));
-  });
+    array('store' => $this_store, 'brands'=>$this_store->getBrands(), 'all_brands'=>Brand::getAll())));
+    });
 
   return $app;
  ?>

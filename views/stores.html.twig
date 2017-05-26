@@ -1,0 +1,19 @@
+<h1>Stores</h1>
+    {% if stores is not empty%}
+    <p>Here are all stores:</p>
+    <ul>
+      {% for store in stores %}
+      <li>{{ store.getName }}</li>
+      {% endfor%}
+    </ul>
+    {% endif %}
+
+    <form action="/stores/create" method="post">
+      <label for="name">New store name:</label>
+      <input type="text" name="name" id="name">
+      <button type="submit" name="button">Add store</button>
+    </form>
+
+    <form action="/stores/delete" method="post">
+      <button type="submit" name="button">Clear all store</button>
+</form>
