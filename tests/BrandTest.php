@@ -51,6 +51,22 @@ $DB = new PDO($server,$username,$password);
       $this->assertEquals($expected, $result);
     }
 
+    function test_getId()
+    {
+      //Arrange
+      $name1 = "Versace";
+      $test_brand1 = new Brand($name1);
+      $test_brand1->save();
+
+      //Act
+      $all_brands = Brand::getAll();
+      $expected = $test_brand1->getId();
+      $result = $all_brands[0]->getId();
+
+      //Assert
+      $this->assertEquals($expected, $result);
+    }
+
     protected function tearDown()
     {
       Brand::deleteAll();
