@@ -40,7 +40,15 @@
         return $brands;
       }
 
-
+      static function deleteAll()
+      {
+        $executed = $GLOBALS['DB']->query("DELETE FROM brands;");
+      }
+        if ($executed){
+          return true;
+        } else {
+          return false;
+        }
 
       }
 ?>
