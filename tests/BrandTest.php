@@ -33,6 +33,24 @@ $DB = new PDO($server,$username,$password);
       $this->assertEquals($expected, $result);
     }
 
+    function test_deleteAll()
+    {
+      //Arrange
+      $name1 = "Versace";
+      $test_brand1 = new Brand($name1);
+      $test_brand1->save();
+
+      $name2 = "Photos";
+      $test_brand2 = new Brand($name2);
+      $test_brand2->save();
+      Brand::deleteAll();
+      //Act
+      $expected = array();
+      $result = Brand::getAll();
+      //Assert
+      $this->assertEquals($expected, $result);
+    }
+
     protected function tearDown()
     {
       Brand::deleteAll();
