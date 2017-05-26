@@ -38,6 +38,33 @@
         }
       }
 
+      function addStore($store)
+      {
+        $executed = $GLOBALS['DB']->query("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$this->getId()},{$store->getId()});");
+        if ($executed) {
+            return true;
+          } else {
+            return false;
+          }
+      }
+
+      function getStores()
+      {
+        $return_stores= $GLOBALS['DB']->query("SELECT stores.* FROM stores
+          JOIN brands_stores ON (brands_stores.store_id = stores.id)
+          JOIN brands ON (brands_stores.brand_id = brands.id)
+          WHERE brand_id ={$this->getId()};");
+        $stores = array();
+        foreach($return_stores as $store){
+          $name = $store['name'];
+          $id = $store['id'];
+          $new_store = new Store($name, $id);
+          array_push($stores, $new_store);
+        }
+        return $stores;
+      }
+
+
       static function getAll()
       {
         $db_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");
@@ -58,6 +85,22 @@
           return true;
         } else {
           return false;
+        }
+      }
+
+      static function find($search_id)
+      {
+        $found_brand = $GLOBALS['DB']->prepare("SELECT * FROM brands WHERE id = :id");
+        $found_brand->bindParam(':id', $search_id, PDO::PARAM_STR);
+        $found_brand->execute();
+        foreach ($found_brand as $brand) {
+          $new_brandName = $brand['name'];
+          $new_id = $brand['id'];
+          if ($new_id == $search_id)
+          {
+            $found_brand = new Brand($new_brandName,$new_id);
+          }
+          return $found_brand;
         }
       }
 
