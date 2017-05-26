@@ -27,6 +27,17 @@
         return $this->id;
       }
 
+      function save()
+      {
+        $executed = $GLOBALS['DB'] -> exec("INSERT INTO brands (name) VALUES ('{this->getName()}');");
+        if ($executed){
+          $this->id = $GLOBALS['DB']->lastInsertId();
+          return true;
+        } else {
+          return false;
+        }
+      }
+
       static function getAll()
       {
         $db_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");
@@ -43,12 +54,12 @@
       static function deleteAll()
       {
         $executed = $GLOBALS['DB']->query("DELETE FROM brands;");
-      }
         if ($executed){
           return true;
         } else {
           return false;
         }
+      }
 
       }
 ?>
