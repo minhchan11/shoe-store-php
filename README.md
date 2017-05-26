@@ -17,8 +17,8 @@ This website will track shoes and stores
 > CREATE DATABASE shoes;
 > USE shoes;
 > CREATE TABLE brands (id serial PRIMARY KEY, name VARCHAR(255));
-> CREATE TABLE shoes (id serial PRIMARY KEY, name VARCHAR(255));
-> CREATE TABLE brands_shoes (id serial PRIMARY KEY, brand_id int, shoe_id int);
+> CREATE TABLE stores (id serial PRIMARY KEY, name VARCHAR(255));
+> CREATE TABLE brands_stores (id serial PRIMARY KEY, brand_id int, shoe_id int);
 ```
 * Clone to local machine
 * Navigate to downloaded folder, into the "web folder"
