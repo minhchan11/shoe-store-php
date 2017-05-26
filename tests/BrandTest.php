@@ -5,7 +5,7 @@
 */
 
 require_once "src/Brand.php";
-// require_once "src/Store.php";
+require_once "src/Store.php";
 
 $server = 'mysql:host=localhost:8889;dbname=shoes_test';
 $username = 'root';
@@ -67,27 +67,10 @@ $DB = new PDO($server,$username,$password);
       $this->assertEquals($expected, $result);
     }
 
-    function test_update()
-    {
-      //Arrange
-      $name1 = "Versace";
-      $test_brand1 = new Brand($name1);
-      $test_brand1->save();
-      $new_name = "Gucci";
-
-      //Act
-      $test_brand1->update($new_name);
-      $expected = $test_brand1->getName();
-      $result = $new_name;
-
-      //Assert
-      $this->assertEquals($expected, $result);
-    }
-
     protected function tearDown()
     {
       Brand::deleteAll();
-      // Store::deleteAll();
+      Store::deleteAll();
     }
   }
  ?>

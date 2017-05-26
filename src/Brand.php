@@ -2,24 +2,24 @@
     class Brand
     {
       //property
-      private $Name;
+      private $name;
       private $id;
 
       //constructor
-      function __construct($Name, $id = null)
+      function __construct($name, $id = null)
       {
-        $this->Name = $Name;
+        $this->name = $name;
         $this->id = $id;
       }
 
       function getName()
       {
-        return $this->Name;
+        return $this->name;
       }
 
-      function setName($new_Name)
+      function setName($new_name)
       {
-        $this->Name = (string) $new_Name;
+        $this->name = (string) $new_Name;
       }
 
       function getId()
@@ -32,17 +32,6 @@
         $executed = $GLOBALS['DB'] -> exec("INSERT INTO brands (name) VALUES ('{$this->getName()}');");
         if ($executed){
           $this->id = $GLOBALS['DB']->lastInsertId();
-          return true;
-        } else {
-          return false;
-        }
-      }
-
-      function update($new_name)
-      {
-        $executed = $GLOBALS['DB'] -> exec("UPDATE brands SET name='{$new_name}' WHERE id = {$this->getId()};");
-        if ($executed) {
-          $this->setName($new_name);
           return true;
         } else {
           return false;
