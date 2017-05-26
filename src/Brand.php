@@ -12,7 +12,21 @@
         $this->id = $id;
       }
 
-    
+      function getName()
+      {
+        return $this->Name;
+      }
+
+      function setName($new_Name)
+      {
+        $this->Name = (string) $new_Name;
+      }
+
+      function getId()
+      {
+        return $this->id;
+      }
+
 
 
 
