@@ -29,7 +29,7 @@
 
       function save()
       {
-        $executed = $GLOBALS['DB'] -> exec("INSERT INTO brands (name) VALUES ('{this->getName()}');");
+        $executed = $GLOBALS['DB'] -> exec("INSERT INTO brands (name) VALUES ('{$this->getName()}');");
         if ($executed){
           $this->id = $GLOBALS['DB']->lastInsertId();
           return true;
@@ -45,7 +45,7 @@
         foreach ($db_brands as $brand) {
           $new_name=$brand['name'];
           $id=$brand['id'];
-          $new_brand= new Brand($new_Name,$id);
+          $new_brand= new Brand($new_name,$id);
           array_push($brands,$new_brand);
         }
         return $brands;
