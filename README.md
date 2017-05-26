@@ -14,7 +14,6 @@ This website will track shoes and stores
 * In a command window:
 ```sql
 > /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot
-
 > CREATE DATABASE shoes;
 > USE shoes;
 > CREATE TABLE brands (id serial PRIMARY KEY, name VARCHAR(255));
@@ -303,7 +302,7 @@ Please contact Minh Phuong mphuong@kent.edu with any questions, concerns, or sug
 This web application uses:
 * PHP
 * Silex
-* mySql 
+* mySql
 
 ****
 
