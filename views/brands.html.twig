@@ -1,4 +1,7 @@
-<h1>Brands</h1>
+{% extends layout %}
+
+{% block content %}
+<h3>Brands</h3>
     {% if brands is not empty%}
     <p>Here are all brands:</p>
     <ul>
@@ -19,3 +22,5 @@
 </form>
 
 <a href="/">Home Page</a>
+
+{% endblock %}

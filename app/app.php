@@ -19,6 +19,9 @@
     'twig.path' => __DIR__.'/../views'
   ));
 
+  $app->before(function () use ($app) {
+    $app['twig']->addGlobal('layout', $app['twig']->loadTemplate('layout.html.twig'));
+});
 
   //get routes
   $app->get("/", function() use ($app) {

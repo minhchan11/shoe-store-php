@@ -1,3 +1,6 @@
+{% extends layout %}
+
+{% block content %}
 <h1>Detail about {{brand.getName}}</h1>
 
   {% if stores is not empty%}
@@ -25,3 +28,5 @@
   </form>
 
 <p><a href="/brands">All brands</a></p>
+
+{% endblock %}

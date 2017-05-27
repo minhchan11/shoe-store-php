@@ -1,3 +1,6 @@
+{% extends layout %}
+
+{% block content %}
 <h1>Stores</h1>
     {% if stores is not empty%}
     <p>Here are all stores:</p>
@@ -19,3 +22,5 @@
 </form>
 
 <a href="/">Home Page</a>
+
+{% endblock %}
