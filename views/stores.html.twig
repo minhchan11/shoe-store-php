@@ -1,24 +1,37 @@
 {% extends layout %}
 
 {% block content %}
-<h1>Stores</h1>
-    {% if stores is not empty%}
-    <p>Here are all stores:</p>
-    <ul>
-      {% for store in stores %}
-      <li>{{ store.getName }} <a href="/store/{{ store.getId }}">Detail</a></li>
-      {% endfor%}
-    </ul>
-    {% endif %}
+<div class="well">
+  <h3>Stores</h3>
+      {% if stores is not empty%}
+      <p>Here are all stores:</p>
+      <ul>
+        {% for store in stores %}
+        <li>{{ store.getName }} <a href="/store/{{ store.getId }}" class="btn btn-warning">Detail</a></li>
+        <br>
+        {% endfor%}
+      </ul>
+      {% else %}
+      <h5>There is no stores yet. Please create one.</h5>
+      {% endif %}
+</div>
 
+<div class="panel panel-info">
+  <div class="panel-heading">Create a new store</div>
+  <div class="panel-body">
     <form action="/stores/create" method="post">
-      <label for="name">New store name:</label>
-      <input type="text" name="name" id="name">
-      <button type="submit" name="button">Add store</button>
+      <div class="form-group">
+        <label for="name">New store name:</label>
+        <input type="text" name="name" id="name" class="form-control">
+    </div>
+    <button type="submit" name="button" class="btn btn-md btn-info">Add store</button>
     </form>
+  </div>
+</div>
+
 
     <form action="/stores/delete" method="post">
-      <button type="submit" name="button">Clear all store</button>
+      <button type="submit" name="button" class="btn btn-block btn-danger">Clear all store</button>
 </form>
 
 <a href="/">Home Page</a>

@@ -2,24 +2,40 @@
 
 {% block content %}
 <h3>Brands</h3>
-    {% if brands is not empty%}
-    <p>Here are all brands:</p>
-    <ul>
-      {% for brand in brands %}
-      <li>{{ brand.getName }}  <a href="/brand/{{ brand.getId }}">Detail</a></li>
-      {% endfor%}
-    </ul>
-    {% endif %}
 
+<div class="well">
+  {% if brands is not empty%}
+  <p>Here are all brands:</p>
+  <ul>
+    {% for brand in brands %}
+    <li>{{ brand.getName }}  <a href="/brand/{{ brand.getId }}" class="btn btn-warning">Detail</a></li>
+    <br>
+    {% endfor%}
+  </ul>
+  {% else %}
+  <h5>There is no brands yet. Please create one.</h5>
+  {% endif %}
+</div>
+
+
+<div class="panel panel-success">
+  <div class="panel-heading">Create a new brand</div>
+  <div class="panel-body">
     <form action="/brands/create" method="post">
-      <label for="name">New brand name:</label>
-      <input type="text" name="name" id="name">
-      <button type="submit" name="button">Add brand</button>
+      <div class="form-group">
+        <label for="name">New brand name:</label>
+        <input type="text" name="name" id="name" class="form-control">
+      </div>
+      <button type="submit" name="button" class="btn btn-md btn-success">Add brand</button>
     </form>
+  </div>
+</div>
 
-    <form action="/brands/delete" method="post">
-      <button type="submit" name="button">Clear all brand</button>
+
+<form action="/brands/delete" method="post">
+    <button type="submit" name="button" class="btn btn-block btn-danger">Clear all brand</button>
 </form>
+
 
 <a href="/">Home Page</a>
 

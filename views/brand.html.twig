@@ -3,29 +3,39 @@
 {% block content %}
 <h1>Detail about {{brand.getName}}</h1>
 
+<div class="well">
   {% if stores is not empty%}
   <h4>Stores in this brand:</h4>
   <ul>
     {% for store in stores%}
     <li>{{store.getName}}</li>
     {% endfor%}
+    <br>
   </ul>
   {% else %}
 
   <h5>There is no store yet</h5>
   {% endif%}
+</div>
+
 
   <h4>Add a store</h4>
-
-  <form action='/brand/{{brand.getId}}/addStore' method='post'>
-        <label for="store_id">Select a store</label>
-        <select id='store_id' name='store_id' type='text'>
-          {% for store in all_stores %}
-            <option value="{{ store.getId }}"> {{ store.getName }} </option>
-          {% endfor %}
-        </select>
-        <button type='submit'>Add store</button>
-  </form>
+  <div class="panel panel-info">
+    <div class="panel-heading">Select a store to add</div>
+    <div class="panel-body">
+    <form action='/brand/{{brand.getId}}/addStore' method='post'>
+        <div class="form-group">
+          <label for="store_id">Select a store</label>
+          <select id='store_id' name='store_id' type='text' class="form-control">
+            {% for store in all_stores %}
+              <option value="{{ store.getId }}"> {{ store.getName }} </option>
+            {% endfor %}
+          </select>
+      </div>
+      <button type="submit" name="button" class="btn btn-md btn-info">Add store</button>
+      </form>
+    </div>
+  </div>
 
 <p><a href="/brands">All brands</a></p>
 
