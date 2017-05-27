@@ -3,7 +3,7 @@
     <p>Here are all stores:</p>
     <ul>
       {% for store in stores %}
-      <li>{{ store.getName }}</li>
+      <li>{{ store.getName }} <a href="/store/{{ store.getId }}">Detail</a></li>
       {% endfor%}
     </ul>
     {% endif %}
@@ -17,3 +17,5 @@
     <form action="/stores/delete" method="post">
       <button type="submit" name="button">Clear all store</button>
 </form>
+
+<a href="/">Home Page</a>
